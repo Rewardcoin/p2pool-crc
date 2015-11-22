@@ -151,6 +151,24 @@ nets = dict(
         ANNOUNCE_CHANNEL='#p2pool-crc',
         VERSION_CHECK=lambda v: True,
     ),
+    SGcoin=math.Object(
+        PARENT=networks.nets['SGcoin'],
+        SHARE_PERIOD=10, # seconds target spacing
+        CHAIN_LENGTH=24*60*60//10, # shares
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares
+        TARGET_LOOKBEHIND=70, # shares coinbase maturity
+        SPREAD=15, # blocks
+        IDENTIFIER='6031F5b8c6924211'.decode('hex'),
+        PREFIX='6290192ba6d4729b'.decode('hex'),
+        P2P_PORT=10088,
+        MIN_TARGET=0,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=False,
+        WORKER_PORT=10086,
+        BOOTSTRAP_ADDRS='chncoin.no-ip.biz'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-alt',
+        VERSION_CHECK=lambda v: True,
+    ),
 
 )
 for net_name, net in nets.iteritems():
